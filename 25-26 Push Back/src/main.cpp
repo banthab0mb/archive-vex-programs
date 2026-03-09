@@ -9,16 +9,19 @@
 using namespace vex;
 competition Competition;
 
-// LED devices
+// LED stuff
 
+// LED devices for each side of drive channel
+// left channel
 auto leftUnderglow = sylib::Addrled(22, 7, 11);
+// right channel
 auto rightUnderglow = sylib::Addrled(22, 8, 11);
 
+//char that determines which alliance color we are 
+//for LED control 
 char currentTeam =  ' ';
 
 // Chassis constructor
-
-// robor
 Drive chassis(
 
 //Pick your drive setup from the list below:
@@ -202,11 +205,9 @@ void autonomous(void) {
   } else if (currentTeam == 'B') { // if on BLUE alliance, set LEDs to BLUE
     leftUnderglow.set_all(0x0000FF);
     rightUnderglow.set_all(0x0000FF);
-  } else { // for skills set LEDs to rainbow
-    leftUnderglow.gradient(0xFF0000, 0xFF0005, 0, 0, false, true);
-    leftUnderglow.cycle(*leftUnderglow, 10);
-    rightUnderglow.gradient(0xFF0000, 0xFF0005, 0, 0, false, true);
-    rightUnderglow.cycle(*rightUnderglow, 10);
+  } else { // for skills set LEDs to WHITE
+    leftUnderglow.set_all(0xFFFFFF);
+    rightUnderglow.set_all(0xFFFFFF);
   }
 
   // Display brain banner image on brain screen
@@ -247,14 +248,11 @@ void autonomous(void) {
 
 void usercontrol(void) {
   
-  // Set underglow to rainbow if no autonomous has run
+  // Set underglow to white if no autonomous has run
   // This makes sure the colors set in auto stay
   if (!Competition.isFieldControl() && auto_started == false) {
-    // underglow rainbow cycle
-    leftUnderglow.gradient(0xFF0000, 0xFF0005, 0, 0, false, true);
-    leftUnderglow.cycle(*leftUnderglow, 10);
-    rightUnderglow.gradient(0xFF0000, 0xFF0005, 0, 0, false, true);
-    rightUnderglow.cycle(*rightUnderglow, 10);
+    leftUnderglow.set_all(0xFFFFFF);
+    rightUnderglow.set_all(0xFFFFFF);
   }
 
   // Tells the brain screen printing in preAuton() to stop
@@ -277,10 +275,6 @@ void usercontrol(void) {
     //or chassis.control_holonomic(); for holo drive.
 
     chassis.control_arcade(); // Standard arcade with deadband
-
-    //cubic(); // Cubic drive
-
-    //quadratic(); // Quadratic drive
 
     // Motor controls
     conveyorControl();
