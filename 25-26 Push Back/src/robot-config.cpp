@@ -20,7 +20,6 @@ motor leftBack = motor(PORT13, ratio6_1, true);
 motor rightFront = motor(PORT14, ratio6_1, false);
 motor rightMiddle = motor(PORT15, ratio6_1, false);
 motor rightBack = motor(PORT16, ratio6_1, false);
-motor_group wholeDrivetrain = (leftFront, leftMiddle, leftBack, rightFront, rightMiddle, rightBack);
 
 // Other devices
 

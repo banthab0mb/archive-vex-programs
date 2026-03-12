@@ -10,7 +10,6 @@ void default_constants();
 // Control functions
 void loaderToggle();
 void parkToggle();
-void trapdoorToggle();
 void wingsToggle();
 
 // Autons

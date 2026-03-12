@@ -14,6 +14,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <algorithm>
+#include <cmath>
+#include <cstdint>
+#include <string>
+#include <vector>
 
 #include "v5.h"
 #include "v5_vcs.h"
@@ -24,6 +28,7 @@
 #include "JAR-Template/util.h"
 #include "JAR-Template/PID.h"
 #include "autons.h"
+#include "images/brain_banner.h"
 
 #define waitUntil(condition)                                                   \
   do {                                                                         \

@@ -1,10 +1,5 @@
 #pragma once
 
-#include <cmath>
-#include <cstdint>
-#include <string>
-#include <vector>
-
 using namespace vex;
 
 extern brain Brain;
@@ -19,7 +14,6 @@ extern motor leftBack;
 extern motor rightFront;
 extern motor rightMiddle;
 extern motor rightBack;
-extern motor_group wholeDrivetrain;
 
 // Devices
 

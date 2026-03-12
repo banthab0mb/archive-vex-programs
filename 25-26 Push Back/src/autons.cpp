@@ -1,9 +1,5 @@
 #include "vex.h"
 #include "sylib/sylib.hpp"
-#include <cmath>
-#include <cstdint>
-#include <string>
-#include <vector>
 
 /**
  * Resets the constants for auton movement.
@@ -38,7 +34,8 @@ void odom_constants(){
   chassis.drive_max_voltage = 8;
   chassis.drive_settle_error = 3;
   chassis.boomerang_lead = .5;
-  chassis.drive_min_voltage = 0;
+  chassis.boomerang_setback = 2;
+  chassis.drive_min_voltage = 2;
 }
 
 bool loaderState = false;
@@ -198,7 +195,7 @@ void red_left(){
   sylib::delay(500);
   chassis.drive_to_pose(-17.561, 48.147, 270); //at long goal
   sylib::delay(300);
-  wholeDrivetrain.stop(hold);
+  chassis.drive_stop(hold);
   conveyor.spin(forward, 12, volt);
   conveyor2.spin(forward, 200, rpm);
   loaderToggle(); //loader up
@@ -254,7 +251,7 @@ void red_right(){
   scorer.stop();
   chassis.drive_to_pose(-6.487, -13.698, 45); // at middle goal
   chassis.drive_distance(2);
-  wholeDrivetrain.stop();
+  chassis.drive_stop(brake);
   conveyor.spin(reverse, 12, volt);
   conveyor2.spin(reverse, 200, rpm);
   scorer.spin(reverse, 85, rpm);
@@ -266,7 +263,7 @@ void red_right(){
   chassis.drive_distance(-33.2);
   chassis.turn_to_angle(90);
   chassis.drive_distance(10);
-  wholeDrivetrain.stop(hold);
+  chassis.drive_stop(hold);
 }
 
 /** 
@@ -312,7 +309,7 @@ void skills(){
   sylib::delay(3500);
   chassis.drive_to_pose(-17.061, 48.147, 270); //at long goal
   sylib::delay(300);
-  wholeDrivetrain.stop(hold);
+  chassis.drive_stop(hold);
   conveyor.spin(forward, 12, volt);
   conveyor2.spin(forward, 200, rpm);
   loaderToggle(); //loader up
