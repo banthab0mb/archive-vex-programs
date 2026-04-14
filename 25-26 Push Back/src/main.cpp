@@ -94,7 +94,7 @@ PORT11,
 PORT10,
 
 //Sideways tracker diameter (reverse to make the direction switch):
--2,
+2,
 
 //Sideways tracker center distance (positive distance is behind the center of the robot, negative is in front):
 3.1875
