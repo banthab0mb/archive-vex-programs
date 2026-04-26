@@ -34,7 +34,7 @@ Drive chassis(
 //HOLONOMIC_TWO_ROTATION
 //
 //Write it here:
-TANK_ONE_SIDEWAYS_ROTATION,
+ZERO_TRACKER_ODOM,
 
 //Add the names of your Drive motors into the motor groups below, separated by commas, i.e. motor_group(Motor1,Motor2,Motor3).
 //You will input whatever motor names you chose when you configured your robot using the sidebar configurer, they don't have to be "Motor1" and "Motor2".
@@ -263,7 +263,7 @@ void userControl(void) {
   Controller.ButtonUp.pressed(userParkToggle);
   Controller.ButtonY.pressed(userHoodToggle);
   Controller.ButtonB.pressed(userWingsToggle);
-  Controller.ButtonRight.pressed(userIntakeToggle);
+  //Controller.ButtonRight.pressed(userIntakeToggle);
 
   std::uint32_t clock = sylib::millis();
   while (1) {

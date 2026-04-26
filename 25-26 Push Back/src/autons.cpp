@@ -191,8 +191,9 @@ void red_left(){
   chassis.turn_to_angle(270);
   loaderToggle(); //loader down
   sylib::delay(500);
-  chassis.drive_distance(13); //at loader
-  sylib::delay(500);
+  chassis.drive_distance(14.5); //at loader
+  sylib::delay(350);
+  chassis.drive_max_voltage = 8;
   chassis.drive_to_pose(-17.561, 48.147, 270); //at long goal
   sylib::delay(300);
   chassis.drive_stop(hold);
@@ -202,10 +203,10 @@ void red_left(){
   hoodToggle(); //hood up
   scorer.spin(forward, 200, rpm);
   sylib::delay(3000);
-  chassis.drive_max_voltage = 8;
-  chassis.drive_distance(10);
+  chassis.drive_max_voltage = 12;
+  chassis.drive_distance(15);
   hoodToggle(); //hood down
-  chassis.drive_distance(-10);
+  chassis.drive_distance(-17);
 }
 
 // Auton for red right start
@@ -226,9 +227,9 @@ void red_right(){
   conveyor.spin(forward, 12, volt);
   conveyor2.spin(forward, 200, rpm);
   scorer.spin(forward, 85, rpm);
-  chassis.drive_distance(11); //at loader
+  chassis.drive_distance(14); //at loader
   sylib::delay(350);
-  chassis.drive_distance(-31); // at long goal
+  chassis.drive_distance(-33); // at long goal
   conveyor.spin(forward, 12, volt);
   conveyor2.spin(forward, 200, rpm);
   loaderToggle();
@@ -249,21 +250,21 @@ void red_right(){
   conveyor.stop();
   conveyor2.stop();
   scorer.stop();
-  chassis.drive_to_pose(-6.487, -13.698, 45); // at middle goal
+  chassis.drive_to_pose(-7.487, -12.698, 45); // at middle goal
   chassis.drive_distance(2);
   chassis.drive_stop(brake);
   conveyor.spin(reverse, 12, volt);
   conveyor2.spin(reverse, 200, rpm);
   scorer.spin(reverse, 85, rpm);
-  sylib::delay(500); //unloading time
-  conveyor.stop();
-  conveyor2.stop();
-  scorer.stop();
-  chassis.drive_max_voltage = 10;
-  chassis.drive_distance(-33.2);
-  chassis.turn_to_angle(90);
-  chassis.drive_distance(10);
-  chassis.drive_stop(hold);
+  sylib::delay(100000); //unloading time
+  // conveyor.stop();
+  // conveyor2.stop();
+  // scorer.stop();
+  // chassis.drive_max_voltage = 10;
+  // chassis.drive_distance(-33.2);
+  // chassis.turn_to_angle(90);
+  // chassis.drive_distance(10);
+  // chassis.drive_stop(hold);
 }
 
 /** 
